@@ -1,0 +1,261 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    font-family: "Nintendo";
+}
+
+@font-face {
+    font-family: "Nintendo";
+    src: url("../fonts/Nintendo-DS-BIOS.ttf");
+}
+
+@font-face {
+    font-family: "Gill Sans MT";
+    src: url("../fonts/Gill\ Sans\ MT\ Medium.ttf");
+}
+
+:root {
+    --bodyColor: #248C5E;
+    --bodyColorShadow: #1E734D;
+
+    --mainWidth: 50vmin;
+    --mainColor: #DBD6D3;
+    --mainColorShadow: #A8A4A2;
+
+    --mainBorderRadius: 2vmin 2vmin 10vmin 2vmin;
+    --mainPadding: 4vmin;
+
+    --screenColor: #908e92;
+    --screenBorderRadius: 2vmin;
+
+    --displayColor: #98AD5E;
+    --displayColorShadow: #8da057;
+    --displayBorderRadius: 5px;
+
+    --direcionalSize: 4vmin;
+    --direcionalColor: #282929;
+
+    --buttonBg: rgb(0,0,0,0.15);
+    --buttonBgShadow: #A19D9A;
+    --buttonSize: 6vmin;
+    --buttonBorderRadius: 50%;
+    --buttonColor: #8c2c5d;
+    --buttonColorShadow: #73244C;
+
+    --optionButtonColor: #83797e;
+    --optionButtonColorShadow: #696064;
+}
+
+button {
+    appearance: none;
+    cursor: pointer;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bodyColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    width: var(--mainWidth);
+    height: calc(var(--mainWidth) * (1600 / 900));
+    background-color: var(--mainColor);
+    box-shadow: 5vmin 2vmin 1px var(--bodyColorShadow);
+    border-radius: var(--mainBorderRadius);
+    padding: var(--mainPadding);
+    position: relative;
+}
+
+#screen {
+    width: 100%;
+    padding-top: 75%;
+    background-color: var(--screenColor);
+    border-radius: var(--screenBorderRadius);
+    position: relative;
+}
+
+#display {
+    position: absolute;
+    width: calc(100% - 15vmin);
+    height: calc(100% - 7.5vmin);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--displayColor);
+    box-shadow: -5vmin 0px 10vmin inset var(--displayColorShadow);
+    border-radius: var(--displayBorderRadius);
+}
+
+header {
+    margin: 1.5vmin 0;
+    font-size: 2.8vmin;
+    cursor: default;
+}
+
+header span {
+    font-size: 3.2vmin;
+    font-family: "Gill Sans MT";
+}
+
+section#controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+section#controls > div:not(div#botoes) {
+    width: 50%;
+}
+
+#direcionais {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#direcionais .wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#direcionais .line {
+    display: flex;
+}
+
+.direcional_single, #direcionais .vazio {
+    width: var(--direcionalSize);
+    height: var(--direcionalSize);
+    background-color: var(--direcionalColor);
+}
+
+.direcional_single {
+    border-radius: 0.5vmin;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vmin;
+}
+
+.direcional_single i {
+    background-color: inherit;
+    opacity: 30%;
+}
+
+div.vazio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5vmin;
+}
+
+div.vazio #circulo {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 50%;
+    border-radius: 50%;
+}
+
+button#esquerda {
+    transform: rotate(-90deg);
+}
+
+button#direita {
+    transform: rotate(90deg);
+}
+
+button#baixo {
+    transform: rotate(180deg);
+}
+
+div#botoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(-25deg);
+    padding: .5vmin;
+    background-color: var(--buttonBg);
+    box-shadow: -0.1vmin -0.8vmin var(--buttonBgShadow) inset;
+    border-radius: var(--buttonSize);
+}
+
+div#botoes .botao_single {
+    margin: 0 0.5vmin;
+    width: var(--buttonSize);
+    height: var(--buttonSize);
+    background-color: var(--buttonColor);
+    border-radius: var(--buttonBorderRadius);
+    box-shadow: -1vmin -1.1vmin 2px var(--buttonColorShadow) inset;
+    transition-duration: 0.4s;
+}
+
+div#botoes .botao_single:hover {
+    box-shadow: -1.4vmin -1.5vmin 2px var(--buttonColorShadow) inset;
+}
+
+div#botoes .botao_single:active {
+    transform: scale(0.925);
+    box-shadow: initial;
+    background-color: var(--buttonColorShadow);
+}
+
+div#options {
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-self: flex-start;
+}
+
+div#options .botao_single {
+    margin: 0 0.75vmin;
+    width: 7vmin;
+    height: 2vmin;
+    border-radius: 50vmin;
+    background-color: var(--optionButtonColor);
+    box-shadow: 1.25vmin .9vmin #8F8389 inset;
+    transform: rotate(-25deg);
+    position: relative;
+    transition-duration: .25s;
+}
+
+div#options .botao_single:hover {
+    box-shadow: initial;
+    background-color: var(--optionButtonColor);
+}
+
+div#options .botao_single span {
+    font-size: 2.5vmin;
+    font-weight: bold;
+    position: absolute;
+    top: 2.25vmin;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+section#output_audio {
+    position: absolute;
+    bottom: calc(var(--mainPadding) / 2);
+    right: var(--mainPadding);
+    transform: rotate(65deg);
+}
+
+.output_single {
+    width: 9vmin;
+    height: 1vmin;
+    background-image: linear-gradient(to right, #A8A39F, #B0ACA8);
+    margin: 1.5vmin;
+    border-radius: 5vmin;
+}
